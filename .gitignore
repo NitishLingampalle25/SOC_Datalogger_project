@@ -1,0 +1,24 @@
+# Vim temporary files
+*.swp
+*.swo
+
+# VCS generated files
+run/simv
+run/simv.daidir/
+run/csrc/
+
+# Verdi generated files
+run/verdiLog/
+
+# Simulation generated files
+run/*.log
+run/*.vpd
+run/*.fsdb
+
+# General compiled/generated files
+*.so
+*.o
+*.a
+
+# OS/editor files
+.DS_Store
