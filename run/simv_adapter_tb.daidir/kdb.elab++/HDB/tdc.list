@@ -1,0 +1,2 @@
+../RTL_files/veer_wrapper_uart_integrated.v
+../TB_files/veer_integrated_uart_adapter_tb.sv

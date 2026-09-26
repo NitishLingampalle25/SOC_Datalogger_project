@@ -1,0 +1,9 @@
+*design* DebussyLib (btIdent Verdi_U-2023.03)
+Command arguments:  -lib  /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/simv_adapter_tb.daidir/work  -saveLevel  -elab  /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/simv_adapter_tb.daidir/kdb  -simflow  -simdir  /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/simv_adapter_tb.daidir/kdb_libs  -topfile  /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/simv_adapter_tb.daidir/.elabcomTopFile  -ssv  -ssy  -Lf  work  +disable_message+C00380+C00381  +disable_message+C00388+C00389  -SNPS_ELABCOM  -saveElab 
+
+*Error* view el2_veer_wrapper is not defined for instance veer_inst
+"../RTL_files/veer_wrapper_uart_integrated.v", 580: 
+
+*Error* view axi_interconnect_uart_top is not defined for instance uart_ic_inst
+"../RTL_files/veer_wrapper_uart_integrated.v", 843: 
+Total	2 error(s),   0 warning(s)
