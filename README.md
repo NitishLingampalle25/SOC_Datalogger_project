@@ -100,7 +100,6 @@ Crossbar with round-robin arbitration between Master 1 (RISC-V core) and Master 
 - AMBA AXI4-Lite UART reference behavior (register map / FIFO conventions used as baseline for `axi_uart_top`) — consistent with LogiCORE AXI UART Lite v2.0 — [docs.amd.com/v/u/en-US/pg142-axi-uartlite](https://docs.amd.com/v/u/en-US/pg142-axi-uartlite)
 - Synopsys VCS / Verdi User Guides — simulation and waveform debug tooling used for verification
 
-> If any of the UART / AES / DMA / WDT RTL was sourced from a specific third-party repository rather than written from scratch, add the exact link here for proper attribution.
 
 ---
 
