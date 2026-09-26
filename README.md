@@ -70,12 +70,17 @@ Crossbar with round-robin arbitration between Master 1 (RISC-V core) and Master 
 
 ### The Six Integrated Peripheral IPs
 
-| 1 | **AES Encryption Engine** (AXI4-Lite slave) | Hardware-accelerated AES-128/256 (ECB/CBC) over staged sensor blocks. Removes the latency and cache-timing side-channel risk of software crypto; its completion pulse doubles as the hardware "system alive" heartbeat for the watchdog. |
-| 2 | **Bus-Mastering DMA Controller** (AXI4-Lite slave + master) | Moves UART telemetry into staging SRAM autonomously once a FIFO threshold is crossed — no CPU polling, no programmatic I/O. Its completion pulse triggers the AES engine directly. |
-| 3 | **Watchdog Timer (WDT)** | Autonomous supervisor with an early-warning IRQ, an NMI line, and a hard reset line, all independent of software. Auto-kicked on every AES completion, so any hang anywhere in the pipeline is detected and recovered from without firmware intervention. |
-| 4 | **UART** | Sensor ingest interface; asserts a hardware DMA request the moment its RX FIFO crosses a watermark, starting the autonomous pipeline with zero CPU involvement. |
-| 5 | **GPIO / Timer** | Board-level I/O and timing references (baud generation, peripheral clocking) supporting the rest of the pipeline. |
-| 6 | **Programmable Interrupt Controller (PIC)** | Aggregates and priority-encodes interrupts from DMA, AES, UART, and WDT-warning into a single vectored line to the core, keeping CPU-side interrupt handling simple despite multiple autonomous blocks running in parallel. |
+| 1 | **AES Encryption Engine** (AXI4-Lite slave) | Hardware-accelerated AES-128/256 (ECB/CBC) over staged sensor blocks. Removes the latency and cache-timing side-channel risk of software crypto; its completion pulse doubles as the hardware "system alive" heartbeat for the watchdog. 
+
+| 2 | **Bus-Mastering DMA Controller** (AXI4-Lite slave + master) | Moves UART telemetry into staging SRAM autonomously once a FIFO threshold is crossed — no CPU polling, no programmatic I/O. Its completion pulse triggers the AES engine directly. 
+
+| 3 | **Watchdog Timer (WDT)** | Autonomous supervisor with an early-warning IRQ, an NMI line, and a hard reset line, all independent of software. Auto-kicked on every AES completion, so any hang anywhere in the pipeline is detected and recovered from without firmware intervention. 
+
+| 4 | **UART** | Sensor ingest interface; asserts a hardware DMA request the moment its RX FIFO crosses a watermark, starting the autonomous pipeline with zero CPU involvement. 
+
+| 5 | **GPIO / Timer** | Board-level I/O and timing references (baud generation, peripheral clocking) supporting the rest of the pipeline. 
+
+| 6 | **Programmable Interrupt Controller (PIC)** | Aggregates and priority-encodes interrupts from DMA, AES, UART, and WDT-warning into a single vectored line to the core, keeping CPU-side interrupt handling simple despite multiple autonomous blocks running in parallel. 
 
 **Supporting element:** a 32 KB dual-port staging SRAM (Port A → AES, Port B → DMA/CPU) that decouples ingest from cryptographic processing, avoiding bus contention between the two.
 
