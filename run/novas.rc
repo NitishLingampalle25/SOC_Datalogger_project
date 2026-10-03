@@ -271,14 +271,14 @@ import_from = source
 [Hier]
 filterTimeout = 1500
 [ImportLiberty]
-SearchPriority = .lib++
-bSkipStateCell = False
 bImportPowerInfo = False
+CellNameToCase = 
+PinNameToCase = 
+SearchPriority = .lib++>.db>.lib
+bSkipStateCell = False
 bSkipFFCell = False
 bScpecifyCellNameCase = False
 bSpecifyPinNameCase = False
-CellNameToCase = 
-PinNameToCase = 
 [Language]
 EditWindow_Font = COURIER12
 Background = ID_WHITE
@@ -330,6 +330,7 @@ Text_font = COURIER12
 nMemory_font = Fixed 14
 Wave_getsignal_form_font = -f COURIER12
 Text_annotFont = Helvetica_M_R_10
+schematics_fixFontSize = False
 [OtherEditor]
 cmd1 = "xterm -font 9x15 -fg black -bg gray -e"
 name = "vi"
@@ -383,10 +384,13 @@ highlightColor = 461,280,675,327
 capturePreview = 0,64,1600,836
 captureSelect = 482,243,637,404
 nsWindowManager = 430,242,738,404
-unknownSave = 568,358,461,245
-QwWarnMsgDlg = 499,596,600,250
-QwUserAskDlg = 638,417,324,130
 importDesignForm = 441,194,715,574
+_qwWin9_Selectfile = 239,305,590,340
+QwWarnMsgDlg = 499,650,592,250
+ForceDebugReport = 495,290,590,340
+vgifFileDialogU = 181,274,790,453
+QwUserAskDlg = 638,415,324,134
+unknownSave = 568,358,461,245
 [Relationship]
 hideRecursiceNode = FALSE
 [Safety]
@@ -671,6 +675,8 @@ Button2 = "Next 1000 Time" "#1000 $stop;.\n"
 Button1 = "Dump All Signals" "$fsdbDumpvars;\n"
 [VIA]
 viaLogViewerDefaultRuleOneSearchForm = "share/VIA/Apps/PredefinedRules/Misc/Onesearch_rule.rc"
+viaToolBox = /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/via.rc
+viaLogViewerDefaultRule = "share/VIA/Apps/PredefinedRules/Generic_rule.rc"
 [VIA.oneSearch.preference]
 DefaultDisplayTimeUnit = "1.000000ns"
 DefaultLogTimeUnit = "1.000000ns"
@@ -706,6 +712,55 @@ isUserChangeColumnVisible = FALSE
 name = Message
 width = 2000
 visualIndex = 4
+isHidden = FALSE
+isUserChangeColumnVisible = FALSE
+[VIA.ruleHistory]
+/home/student/snps_tools_target/verdi/U-2023.03-SP1/share/VIA/Apps/Interoperability/AnalyzeForceDebugReport/analyzeForceDebugReport.rc = 
+/home/student/snps_tools_target/verdi/U-2023.03-SP1/share/VIA/Apps/PredefinedRules/Generic_rule.rc = 
+/home/student/snps_tools_target/verdi/U-2023.03-SP1/share/VIA/Apps/DesignValidation/CheckModRegOut/crcRule.rc = 
+/home/student/snps_tools_target/verdi/U-2023.03-SP1/share/VIA/Apps/FsdbInvestigation/DetectPortZ/detectPortZ_rule.rc = 
+/home/student/snps_tools_target/verdi/U-2023.03-SP1/share/VIA/Apps/DesignValidation/DetectAssignBitWidthMismatch/detectAssignBitWidthMismatch_rule.rc = 
+[VIA.smartLog.preference]
+DefaultDisplayTimeUnit = "1.000000ns"
+DefaultLogTimeUnit = "1.000000ns"
+[VIA.smartLog.preference.vgifColumnSettingRC]
+[VIA.smartLog.preference.vgifColumnSettingRC.setting0]
+parRuleSets = "/home/student/snps_tools_target/verdi/U-2023.03-SP1/share/VIA/Apps/PredefinedParRules/par_rule_OVM.rc /home/student/snps_tools_target/verdi/U-2023.03-SP1/share/VIA/Apps/PredefinedParRules/par_rule_UVM.rc /home/student/snps_tools_target/verdi/U-2023.03-SP1\
+/share/VIA/Apps/PredefinedParRules/par_rule_LP.rc /home/student/snps_tools_target/verdi/U-2023.03-SP1/share/VIA/Apps/PredefinedParRules/par_rule_VCS.rc "
+[VIA.smartLog.preference.vgifColumnSettingRC.setting0.column0]
+name = Reporter
+width = 60
+visualIndex = 2
+isHidden = FALSE
+isUserChangeColumnVisible = FALSE
+[VIA.smartLog.preference.vgifColumnSettingRC.setting0.column1]
+name = Severity
+width = 60
+visualIndex = 1
+isHidden = FALSE
+isUserChangeColumnVisible = FALSE
+[VIA.smartLog.preference.vgifColumnSettingRC.setting0.column2]
+name = Time
+width = 60
+visualIndex = 0
+isHidden = FALSE
+isUserChangeColumnVisible = FALSE
+[VIA.smartLog.preference.vgifColumnSettingRC.setting0.column3]
+name = Code
+width = 60
+visualIndex = 3
+isHidden = FALSE
+isUserChangeColumnVisible = FALSE
+[VIA.smartLog.preference.vgifColumnSettingRC.setting0.column4]
+name = Type
+width = 60
+visualIndex = 4
+isHidden = TRUE
+isUserChangeColumnVisible = FALSE
+[VIA.smartLog.preference.vgifColumnSettingRC.setting0.column5]
+name = Message
+width = 2000
+visualIndex = 5
 isHidden = FALSE
 isUserChangeColumnVisible = FALSE
 [Vi]
@@ -790,7 +845,7 @@ scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
 getSignalForm = 0 0 800 479 245 381 505 183
-viewPort = 0 25 1600 215 100 65
+viewPort = 0 25 1600 181 100 65
 legendBackground = -c ID_BLACK
 valueBackground = -c ID_BLACK
 curveBackground = -c ID_BLACK
@@ -1243,10 +1298,177 @@ schFillTipBackColor = ID_GRAY6 blank
 schFillFsmBlock = ID_BLUE7 blank
 schFillBlackBoxColor = ID_BLUE3 dots
 schFillCmtColor = ID_YELLOW4 fill_solid
-pre_select = True
-ShowPassThroughNet = False
 ComputedAnnotColor = ID_PURPLE5
-viewport = 0 25 885 324
+AutoMergeSettingFile = 
+PowerMapFile = 
+GroundMapFile = 
+CopyScopeNameDelimiter = 
+RegNamingRule = 
+netFontColor
+fanInOutLevel = 1
+schColorTheme = customized
+schSwapDragBtn13 = False
+schEnableLMBDnd = off
+EntityName = True
+ArchName = True
+toolbar = True
+msgLine = True
+fixFontSize = False
+autoSelectLineStyle = False
+ClockAutomaticFont = FALSE
+portName = False
+pinName = False
+pinNameOldLayout = False
+boundaryCellNameDown = False
+skipTopLevelNameWhenCopyHierPath = False
+instName = False
+pinNetName = False
+localNetName = False
+completeName = False
+parameterList = False
+highContrastMode = False
+defaultBlockedCellNumber = 100
+faultStatusAnnot = False
+faultStatusBarOnFlopClass = False
+faultStatusBarOnPinPort = False
+faultStatusBarOnNet = False
+annotate = False
+showPropagatedValue = False
+showConstantNet = False
+annotateInColor = False
+annotateLeadingZeros = False
+Tip = False
+ExpandRTL = False
+pre_select = True
+autoFit = False
+schemaTip = False
+modulePortName = False
+stopOnModuleBoundary = False
+stopOnFSM = True
+stopOnMOSCell = FALSE
+checkFloatingNet = False
+TraceWithPolarity = False
+shortName = True
+AutoMerge = False
+ShowPowerTip = True
+schModuleName = True
+DisplayLengthwiseTransistor = False
+FullHierTip = False
+NetConnectedToPortTip = False
+InferenceLibCell = True
+DisplayPowerCell = False
+ShowPGPin = True
+ShowSelectionToolbar = False
+ShowPreselectionToolbar = False
+HiearchyFlattenMode = False
+UpperPassThroughNets = False
+ShowNetConnection = False
+ShowAllHierPortsOnBoundary = False
+LineupRegistersVertically = False
+FixViewOnTraceStartingInst = False
+HighlightTracedNet = False
+fullHierPartialDis = False
+ComboGLKFromSDC = False
+ClkTreeListAllPorts = False
+ShowPassThroughNet = False
+ExpandToAllDL = True
+PowerAwareCellColor = True
+StickyLocator = False
+KeepOnTop = False
+sdfDelayScale = Default
+sdfDelayType = Typical
+sdfDelayPrecision = 0.01
+MagnifierSize = Medium
+MagnifierRatio = X4
+HideUnusedPin = True
+HideUnusedPinThreshold = 15
+bMaxTraceCnt = False
+MaxTraceCnt = 0
+MultiProcTrace = True
+MultiProcTimeOut = 5
+MultiProcNum = 2
+AdvanceTraceBus = FALSE
+TurnOffMouseGesture = FALSE
+QuickTrace2Point = FALSE
+ShowLocOption = TRUE
+InputPinLeft = True
+InputPinRight = True
+InputPinTop = True
+InputPinBottom = True
+OutputPinLeft = True
+OutputPinRight = True
+OutputPinTop = True
+OutputPinBottom = True
+InoutPinLeft = True
+InoutPinRight = True
+InoutPinTop = True
+InoutPinBottom = True
+PinIntervalGrids = 2
+PageView = False
+AutoCacualte = False
+PageSize = A4
+PageOrient = Landscape
+PnRAutoFlipPort = True
+PnRAutoFlipPortFourSide = False
+IsShowConstantValue = True
+DetailRTL = True
+DetailMux = True
+DetailLevel = 99999
+RecogFSM = False
+ExpandGenBlock = True
+RecogMem = True
+moduleFontName = "Default"
+moduleFontColor = ID_CYAN5
+moduleFontAdjustedSize = 5
+moduleFontBold = FALSE
+moduleFontItalic = FALSE
+moduleFontOverride = FALSE
+moduleFontAutoAdjust = TRUE
+instFontName = "Default"
+instFontColor = ID_CYAN5
+instFontAdjustedSize = 5
+instFontBold = FALSE
+instFontItalic = FALSE
+instFontOverride = FALSE
+instFontAutoAdjust = TRUE
+portFontName = "Default"
+portFontColor = ID_CYAN5
+portFontAdjustedSize = 3
+portFontBold = FALSE
+portFontItalic = FALSE
+portFontOverride = FALSE
+portFontAutoAdjust = TRUE
+instPortFontName = "Default"
+instPortFontColor = ID_CYAN5
+instPortFontAdjustedSize = 3
+instPortFontBold = FALSE
+instPortFontItalic = FALSE
+instPortFontOverride = FALSE
+instPortFontAutoAdjust = TRUE
+netFontName = "Default"
+netFontAdjustedSize = 3
+netFontBold = FALSE
+netFontItalic = FALSE
+netFontOverride = FALSE
+netFontAutoAdjust = TRUE
+commentFontName = "Default"
+commentFontColor = ID_BLUE3
+commentFontAdjustedSize = 10
+commentFontBold = FALSE
+commentFontItalic = FALSE
+commentFontOverride = FALSE
+commentFontAutoAdjust = TRUE
+SubScopeFontName = "Default"
+SubScopeFontColor = ID_BLUE3
+SubScopeFontAdjustedSize = 8
+SubScopeFontBold = FALSE
+SubScopeFontItalic = FALSE
+SubScopeFontOverride = FALSE
+SubScopeFontAutoAdjust = TRUE
+clockTreeBrowser-MarkerColor = ID_YELLOW5
+clockTreeBrowser-SelectedColor = ID_BLUE5
+clockTreeBrowser-ViolationColor = ID_RED5
+viewport = 0 25 1600 708
 [schematics_print]
 Signature = FALSE
 DesignName = PCU
@@ -1311,7 +1533,7 @@ StopAfterCompileOption = -tcl
 [turboSchema_Printer_Options]
 Orientation = Landscape
 [turbo_library]
-bdb_load_scope
+bdb_load_scope = 
 [vdCovFilteringSearchesStrings]
 keepLastUsedFiltersMaxNum = 10
 [verisity]
@@ -1323,9 +1545,9 @@ AddImportArgument = FALSE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -s
 [wave.0]
-viewPort = 0 25 1600 215 100 65
+viewPort = 0 25 1600 181 100 65
 [wave.1]
-viewPort = 0 25 1600 733 275 65
+viewPort = 0 25 1600 733 207 65
 [wave.2]
 viewPort = 0 25 1600 326 100 65
 [wave.3]

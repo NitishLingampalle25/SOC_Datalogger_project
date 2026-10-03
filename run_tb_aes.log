@@ -1,0 +1,56 @@
+
+Warning-[LNX_OS_VERUN] Unsupported Linux version
+  Linux version 'Rocky Linux release 8.10 (Green Obsidian)' is not supported 
+  on 'x86_64' officially, assuming linux compatibility by default. Set 
+  VCS_ARCH_OVERRIDE to linux or suse32 to override.
+  Please refer to release notes for information on supported platforms.
+
+Command: vcs -full64 -sverilog -l run_tb_aes.log RTL_files/aes/timescale.v RTL_files/aes/aes_sbox.v \
+RTL_files/aes/aes_rcon.v RTL_files/aes/aes_key_expand_128.v RTL_files/aes/aes_inv_sbox.v \
+RTL_files/aes/aes_cipher_top.v RTL_files/aes/aes_inv_cipher_top.v RTL_files/aes/aes_axi_slave.v \
+RTL_files/aes/axi_to_axi4_bridge.v RTL_files/aes/axi_subsystem.v TB_files/tb_aes_subsystem.sv \
+-o simv_tb_aes
+                         Chronologic VCS (TM)
+         Version U-2023.03_Full64 -- Sat Oct  3 09:54:51 2026
+
+                    Copyright (c) 1991 - 2023 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file 'RTL_files/aes/timescale.v'
+Parsing design file 'RTL_files/aes/aes_sbox.v'
+Parsing design file 'RTL_files/aes/aes_rcon.v'
+Parsing design file 'RTL_files/aes/aes_key_expand_128.v'
+Parsing design file 'RTL_files/aes/aes_inv_sbox.v'
+Parsing design file 'RTL_files/aes/aes_cipher_top.v'
+Parsing design file 'RTL_files/aes/aes_inv_cipher_top.v'
+Parsing design file 'RTL_files/aes/aes_axi_slave.v'
+Parsing design file 'RTL_files/aes/axi_to_axi4_bridge.v'
+Parsing design file 'RTL_files/aes/axi_subsystem.v'
+Parsing design file 'TB_files/tb_aes_subsystem.sv'
+Top Level Modules:
+       tb_aes_subsystem
+TimeScale is 1 ns / 1 ps
+
+Error-[UPIMI-E] Undefined port in module instantiation
+RTL_files/aes/aes_axi_slave.v, 178
+  Port "kdone" is not defined in module 'aes_inv_cipher_top' defined in 
+  "RTL_files/aes/aes_inv_cipher_top.v", 59
+  Module instance: aes_inv_cipher_top u_aes_inv_cipher( .clk (aclk),  .rst 
+  (rst),  .kld ((reg_key_ld & reg_mode)),  .kdone (inv_cipher_kdone),  .ld 
+  ((reg_start_ld & reg_mode)),  ...
+
+1 error
+CPU time: .082 seconds to compile

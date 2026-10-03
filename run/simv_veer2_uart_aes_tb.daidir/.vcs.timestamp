@@ -1,0 +1,242 @@
+20       
+0 el2_pdef.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/el2_pdef.vh
+0 axi-lite_uart-ipcore-develop/src/include/el2_pdef.vh
+0 common_defines.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/common_defines.vh
+0 axi-lite_uart-ipcore-develop/src/include/common_defines.vh
+0 el2_param.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/el2_param.vh
+0 axi-lite_uart-ipcore-develop/src/include/el2_param.vh
+0 el2_dec_csr_equ_m.svh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/el2_dec_csr_equ_m.svh
+0 axi-lite_uart-ipcore-develop/src/include/el2_dec_csr_equ_m.svh
+0 RTL_files/Cores-VeeR-EL2/snapshots/default/el2_dec_csr_equ_m.svh
+0 pic_map_auto.h
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/pic_map_auto.h
+0 axi-lite_uart-ipcore-develop/src/include/pic_map_auto.h
+0 axi_uart_defines.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/axi_uart_defines.vh
+0 axi_uart.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/axi_uart.vh
+43
++define+RV_BUILD_AXI4
++incdir+RTL_files/Cores-VeeR-EL2/design/include
++incdir+RTL_files/Cores-VeeR-EL2/snapshots/default
++incdir+axi-lite_uart-ipcore-develop/src/include
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/home/student/snps_tools_target/vcs/U-2023.03/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libvirsim.so /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/liberrorinf.so /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libsnpsmalloc.so /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libvfs.so
+-Mout=run/simv_veer2_uart_aes_tb
+-Msaverestoreobj=/home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/home/student/snps_tools_target/vcs/U-2023.03/include
+-Mxllcflags=
+-f run/runf.f
+-full64
+-gen_obj
+-o run/simv_veer2_uart_aes_tb
+-picarchive
+-sverilog
+-timescale=1ns/1ps
+-top
+/home/student/snps_tools_target/vcs/U-2023.03/linux64/bin/vcs1
+veer2_uart_aes_tb
+run/simv_veer2_uart_aes_tb
+run/runf.f
+RTL_files/aes/timescale.v
+RTL_files/aes/aes_sbox.v
+RTL_files/aes/aes_inv_sbox.v
+RTL_files/aes/aes_rcon.v
+RTL_files/aes/aes_key_expand_128.v
+RTL_files/aes/aes_cipher_top.v
+RTL_files/aes/aes_inv_cipher_top.v
+RTL_files/aes_veer_adapter.v
+RTL_files/veer2_uart_aes_integrated.v
+TB_files/veer2_uart_aes_tb.sv
+80
+which_declare=declare -f
+XMODIFIERS=@im=ibus
+XDG_VTNR=2
+XDG_SESSION_TYPE=wayland
+XDG_SESSION_ID=2
+XDG_SESSION_DESKTOP=gnome
+XDG_SEAT=seat0
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_MENU_PREFIX=gnome-
+XDG_DATA_DIRS=/home/student/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+XDG_CURRENT_DESKTOP=GNOME
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.253LW3
+WAYLAND_DISPLAY=wayland-0
+VTE_VERSION=5204
+VMR_MODE_FLAG=64
+VCS_PATHMAP_PRELOAD_DONE=1
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_HOME=/home/student/snps_tools_target/vcs/U-2023.03
+VCS_EXEC_DONE=1
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+USERNAME=student
+UNAME=/bin/uname
+TOOL_HOME=/home/student/snps_tools_target/vcs/U-2023.03/linux64
+S_COLORS=auto
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+SNPS_VCS_CLANG_PATH=/home/student/snps_tools_target/vcs/U-2023.03/linux64/clang
+SNPS_INTERNAL_VCS_LINUX_OS=linux
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/4587,unix/unix:/tmp/.ICE-unix/4587
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+QT_IM_MODULE=ibus
+OVA_UUM=0
+MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH LD_PRELOAD
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+MODULESHOME=/usr/share/Modules
+MODULEPATH_modshare=/usr/share/Modules/modulefiles:2:/etc/modulefiles:2:/usr/share/modulefiles:2
+MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+MANAGERPID=4536
+LOADEDMODULES=
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+JOURNAL_STREAM=9:48495
+INVOCATION_ID=fe9b9ccbcbe143af8401be88b92f3fc6
+HISTCONTROL=ignoredups
+GUESTFISH_RESTORE=\e[0m
+GUESTFISH_PS1=\[\e[1;32m\]><fs>\[\e[0;31m\] 
+GUESTFISH_OUTPUT=\e[0m
+GUESTFISH_INIT=\e[1;34m
+GNOME_TERMINAL_SERVICE=:1.79
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/7937077a_08dd_49b5_9bc1_0f206ce62d17
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GIT_PAGER=cat
+GDM_LANG=en_IN.UTF-8
+GDMSESSION=gnome
+DESKTOP_SESSION=gnome
+DEBUGINFOD_URLS=https://debuginfod.centos.org/ 
+DBUS_STARTER_BUS_TYPE=session
+DBUS_STARTER_ADDRESS=unix:path=/run/user/1000/bus,guid=be4519a38e7ea0ff8b3f30ae6ac07deb
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus,guid=be4519a38e7ea0ff8b3f30ae6ac07deb
+COLORTERM=truecolor
+BASH_FUNC_which%%=() {  ( alias;_ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@_}
+BASH_FUNC_switchml%%=() {  typeset swfound=1;_ if [ "${MODULES_USE_COMPAT_VERSION:-0}" = '1' ]; then_ typeset swname='main';_ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then_ typeset swfound=0;_ unset MODULES_USE_COMPAT_VERSION;_ fi;_ else_ typeset swname='compatibility';_ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then_ typeset swfound=0;_ MODULES_USE_COMPAT_VERSION=1;_ export MODULES_USE_COMPAT_VERSION;_ fi;_ fi;_ if [ $swfound -eq 0 ]; then_ echo "Switching to Modules $swname version";_ source /usr/share/Modules/init/bash;_ else_ echo "Cannot switch to Modules $swname version, command not found";_ return 1;_ fi_}
+BASH_FUNC_scl%%=() {  if [ "$1" = "load" -o "$1" = "unload" ]; then_ eval "module $@";_ else_ /usr/bin/scl "$@";_ fi_}
+BASH_FUNC_module%%=() {  _module_raw "$@" 2>&1_}
+BASH_FUNC_ml%%=() {  module ml "$@"_}
+BASH_FUNC__module_raw%%=() {  unset _mlshdbg;_ if [ "${MODULES_SILENT_SHELL_DEBUG:-0}" = '1' ]; then_ case "$-" in _ *v*x*)_ set +vx;_ _mlshdbg='vx'_ ;;_ *v*)_ set +v;_ _mlshdbg='v'_ ;;_ *x*)_ set +x;_ _mlshdbg='x'_ ;;_ *)_ _mlshdbg=''_ ;;_ esac;_ fi;_ unset _mlre _mlIFS;_ if [ -n "${IFS+x}" ]; then_ _mlIFS=$IFS;_ fi;_ IFS=' ';_ for _mlv in ${MODULES_RUN_QUARANTINE:-};_ do_ if [ "${_mlv}" = "${_mlv##*[!A-Za-z0-9_]}" -a "${_mlv}" = "${_mlv#[0-9]}" ]; then_ if [ -n "`eval 'echo ${'$_mlv'+x}'`" ]; then_ _mlre="${_mlre:-}${_mlv}_modquar='`eval 'echo ${'$_mlv'}'`' ";_ fi;_ _mlrv="MODULES_RUNENV_${_mlv}";_ _mlre="${_mlre:-}${_mlv}='`eval 'echo ${'$_mlrv':-}'`' ";_ fi;_ done;_ if [ -n "${_mlre:-}" ]; then_ eval `eval ${_mlre} /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '"$@"'`;_ else_ eval `/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash "$@"`;_ fi;_ _mlstatus=$?;_ if [ -n "${_mlIFS+x}" ]; then_ IFS=$_mlIFS;_ else_ unset IFS;_ fi;_ unset _mlre _mlv _mlrv _mlIFS;_ if [ -n "${_mlshdbg:-}" ]; then_ set -$_mlshdbg;_ fi;_ unset _mlshdbg;_ return $_mlstatus_}
+ANTIGRAVITY_TRAJECTORY_ID=9bbf629c-2225-4cc4-958d-895e869b4e08
+ANTIGRAVITY_SOURCE_METADATA={"tool":{"conversationId":"70336bed-a730-4635-b0c5-d181fddaf4f8","stepIndex":704,"toolCall":{"id":"call_964222","name":"run_command","argumentsJson":"{\"CommandLine\":\"export VCS_HOME=/home/student/snps_tools_target/vcs/U-2023.03\\nexport SNPSLMD_LICENSE_FILE=27021@14.139.1.126\\nexport LM_LICENSE_FILE=27021@14.139.1.126\\nexport PATH=$VCS_HOME/bin:$PATH\\n\\nvcs -full64 -sverilog -timescale=1ns/1ps +define+RV_BUILD_AXI4 \\\\\\n    +incdir+axi-lite_uart-ipcore-develop/src/include \\\\\\n    +incdir+RTL_files/Cores-VeeR-EL2/snapshots/default \\\\\\n    +incdir+RTL_files/Cores-VeeR-EL2/design/include \\\\\\n    -f run/runf.f \\\\\\n    RTL_files/aes/timescale.v \\\\\\n    RTL_files/aes/aes_sbox.v \\\\\\n    RTL_files/aes/aes_inv_sbox.v \\\\\\n    RTL_files/aes/aes_rcon.v \\\\\\n    RTL_files/aes/aes_key_expand_128.v \\\\\\n    RTL_files/aes/aes_cipher_top.v \\\\\\n    RTL_files/aes/aes_inv_cipher_top.v \\\\\\n    RTL_files/aes_veer_adapter.v \\\\\\n    RTL_files/veer2_uart_aes_integrated.v \\\\\\n    TB_files/veer2_uart_aes_tb.sv \\\\\\n    -top veer2_uart_aes_tb -o run/simv_veer2_uart_aes_tb \\u0026\\u0026 ./run/simv_veer2_uart_aes_tb \\u003e sim_final_output.txt 2\\u003e\\u00261 \\u0026\\u0026 cat sim_final_output.txt\",\"Cwd\":\"/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project\",\"WaitMsBeforeAsync\":10000,\"toolAction\":\"Running final simulation\",\"toolSummary\":\"Compile and run final simulation test\"}","thinkingSignature":"EtMBCtABAWkUfRMYsFAlIRC02DOA578yDOcmaKyhF5dN8sYyT4YPoAX//BsWfroko1GTYONuH2zUOjT6qae/EKHfRNQMFODsJXf0Mk6g2Fp3SVAGlP3yGElb7/S3XxHQtCWqfWu9b65XJ80BItJ9ItSqicSdQgmghSoMcY8hAZTn0ry6TrdRiJpFf6h6/kV9Jzy4GJY9x19BgXErsTuYTOxBE+blJcq7KK2fA+KZN0yWZx9NDCpU8rqdMTnM8+RHeJnvKJoRxD7xXvFk4wJXaKpYSkFv6g=="}}}
+ANTIGRAVITY_PROJECT_ID=default-cli-project
+ANTIGRAVITY_LS_VERSION=cli-1.2.16
+ANTIGRAVITY_LS_ADDRESS=localhost:34747
+ANTIGRAVITY_CSRF_TOKEN=0559f66c-8f24-44cb-9fe2-e55174b59c3a
+ANTIGRAVITY_CONVERSATION_ID=70336bed-a730-4635-b0c5-d181fddaf4f8
+ANTIGRAVITY_APP_DATA_DIR=/home/student/.gemini/antigravity-cli
+ANTIGRAVITY_AGENTAPI_EXE=/home/student/.local/bin/agy
+ANTIGRAVITY_AGENT=1
+0
+0
+86
+1685359112 axi-lite_uart-ipcore-develop/src/include/axi_uart.vh
+1685359112 axi-lite_uart-ipcore-develop/src/include/axi_uart_defines.vh
+1790424117 RTL_files/Cores-VeeR-EL2/snapshots/default/pic_map_auto.h
+1790412678 RTL_files/Cores-VeeR-EL2/design/include/el2_dec_csr_equ_m.svh
+1790424117 RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh
+1790424117 RTL_files/Cores-VeeR-EL2/snapshots/default/common_defines.vh
+1790424117 RTL_files/Cores-VeeR-EL2/snapshots/default/el2_pdef.vh
+1791015063 TB_files/veer2_uart_aes_tb.sv
+1791005422 RTL_files/veer2_uart_aes_integrated.v
+1791002795 RTL_files/aes_veer_adapter.v
+1787960792 RTL_files/aes/aes_inv_cipher_top.v
+1787960752 RTL_files/aes/aes_cipher_top.v
+1787961092 RTL_files/aes/aes_key_expand_128.v
+1787961118 RTL_files/aes/aes_rcon.v
+1787960870 RTL_files/aes/aes_inv_sbox.v
+1787961158 RTL_files/aes/aes_sbox.v
+1667113832 RTL_files/aes/timescale.v
+1790425152 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/TB_files/veer_integrated_uart_adapter_tb.sv
+1790425145 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/veer_wrapper_uart_integrated.v
+1789812003 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/axi4_to_axilite_bridge.v
+1789812880 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/axi_interconnect_uart_top.v
+1787953024 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Interconnect/axi_interconnect_wrap_2x6.v
+1787953154 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Interconnect/axi_interconnect.v
+1787946254 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Interconnect/arbiter.v
+1787946252 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Interconnect/priority_encoder.v
+1789811518 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/uart_transmitter.v
+1789811518 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/uart_receiver.v
+1789811518 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/uart_parity_bit_compute.v
+1789811518 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/uart_controller.v
+1789811518 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/axi_uart_top.v
+1789811518 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/axi_internal_fifo.v
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/el2_veer.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/el2_pmp.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/el2_dma_ctrl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/el2_pic_ctrl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/el2_mem.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_lockstep.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/el2_lockstep_pkg.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dbg/el2_dbg.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_trigger.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_dccm_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_dccm_mem.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_ecc.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_bus_intf.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_bus_buffer.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_stbuf.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_lsc_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_addrcheck.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_clkdomain.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_div_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_mul_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_alu_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_trigger.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_tlu_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_pmp_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_ib_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_gpr_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_decode_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_iccm_mem.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_mem_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ic_mem.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_bp_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ifc_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_compress_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_aln_ctl.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dmi/rvjtag_tap.v
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dmi/dmi_jtag_to_core_sync.v
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dmi/dmi_wrapper.v
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/dmi/dmi_mux.v
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lib/axi4_to_ahb.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lib/ahb_to_axi4.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_lib.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lib/mem_lib.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lib/beh_lib.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_prim_buf.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_prim_generic_buf.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_mem_if.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/el2_mubi_pkg.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_assert.sv
+1790412678 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/include/el2_def.sv
+1790426699 run/runf.f
+4
+1677385575 /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libvirsim.so
+1677385060 /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/liberrorinf.so
+1677385018 /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libsnpsmalloc.so
+1677385055 /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libvfs.so
+1791015083 run/simv_veer2_uart_aes_tb.daidir
+-1 partitionlib

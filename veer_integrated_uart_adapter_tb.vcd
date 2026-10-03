@@ -1,0 +1,332 @@
+$date
+	Sat Oct  3 11:01:39 2026
+$end
+
+$version
+	Synopsys VCS version U-2023.03_Full64
+$end
+
+$timescale
+	1ps
+$end
+
+$comment Csum: 1 aa98eb8e4dc34867 $end
+
+
+$scope module veer_integrated_uart_adapter_tb $end
+$var reg 1 ! clk $end
+$var reg 1 " rst_n $end
+$var reg 4 # m_axi_awid [3:0] $end
+$var reg 32 $ m_axi_awaddr [31:0] $end
+$var reg 8 % m_axi_awlen [7:0] $end
+$var reg 3 & m_axi_awsize [2:0] $end
+$var reg 2 ' m_axi_awburst [1:0] $end
+$var reg 1 ( m_axi_awlock $end
+$var reg 4 ) m_axi_awcache [3:0] $end
+$var reg 3 * m_axi_awprot [2:0] $end
+$var reg 4 + m_axi_awqos [3:0] $end
+$var reg 4 , m_axi_awregion [3:0] $end
+$var reg 1 - m_axi_awvalid $end
+$var wire 1 . m_axi_awready $end
+$var reg 64 / m_axi_wdata [63:0] $end
+$var reg 8 0 m_axi_wstrb [7:0] $end
+$var reg 1 1 m_axi_wlast $end
+$var reg 1 2 m_axi_wvalid $end
+$var wire 1 3 m_axi_wready $end
+$var wire 4 4 m_axi_bid [3:0] $end
+$var wire 2 5 m_axi_bresp [1:0] $end
+$var wire 1 6 m_axi_bvalid $end
+$var reg 1 7 m_axi_bready $end
+$var reg 4 8 m_axi_arid [3:0] $end
+$var reg 32 9 m_axi_araddr [31:0] $end
+$var reg 8 : m_axi_arlen [7:0] $end
+$var reg 3 ; m_axi_arsize [2:0] $end
+$var reg 2 < m_axi_arburst [1:0] $end
+$var reg 1 = m_axi_arlock $end
+$var reg 4 > m_axi_arcache [3:0] $end
+$var reg 3 ? m_axi_arprot [2:0] $end
+$var reg 4 @ m_axi_arqos [3:0] $end
+$var reg 4 A m_axi_arregion [3:0] $end
+$var reg 1 B m_axi_arvalid $end
+$var wire 1 C m_axi_arready $end
+$var wire 4 D m_axi_rid [3:0] $end
+$var wire 64 E m_axi_rdata [63:0] $end
+$var wire 2 F m_axi_rresp [1:0] $end
+$var wire 1 G m_axi_rlast $end
+$var wire 1 H m_axi_rvalid $end
+$var reg 1 I m_axi_rready $end
+$var wire 8 J s_axi_awid [7:0] $end
+$var wire 32 K s_axi_awaddr [31:0] $end
+$var wire 8 L s_axi_awlen [7:0] $end
+$var wire 3 M s_axi_awsize [2:0] $end
+$var wire 2 N s_axi_awburst [1:0] $end
+$var wire 1 O s_axi_awlock $end
+$var wire 4 P s_axi_awcache [3:0] $end
+$var wire 3 Q s_axi_awprot [2:0] $end
+$var wire 4 R s_axi_awqos [3:0] $end
+$var wire 1 S s_axi_awvalid $end
+$var reg 1 T s_axi_awready $end
+$var wire 32 U s_axi_wdata [31:0] $end
+$var wire 4 V s_axi_wstrb [3:0] $end
+$var wire 1 W s_axi_wlast $end
+$var wire 1 X s_axi_wvalid $end
+$var reg 1 Y s_axi_wready $end
+$var reg 8 Z s_axi_bid [7:0] $end
+$var reg 2 [ s_axi_bresp [1:0] $end
+$var reg 1 \ s_axi_bvalid $end
+$var wire 1 ] s_axi_bready $end
+$var wire 8 ^ s_axi_arid [7:0] $end
+$var wire 32 _ s_axi_araddr [31:0] $end
+$var wire 8 ` s_axi_arlen [7:0] $end
+$var wire 3 a s_axi_arsize [2:0] $end
+$var wire 2 b s_axi_arburst [1:0] $end
+$var wire 1 c s_axi_arlock $end
+$var wire 4 d s_axi_arcache [3:0] $end
+$var wire 3 e s_axi_arprot [2:0] $end
+$var wire 4 f s_axi_arqos [3:0] $end
+$var wire 1 g s_axi_arvalid $end
+$var reg 1 h s_axi_arready $end
+$var reg 8 i s_axi_rid [7:0] $end
+$var reg 32 j s_axi_rdata [31:0] $end
+$var reg 2 k s_axi_rresp [1:0] $end
+$var reg 1 l s_axi_rlast $end
+$var reg 1 m s_axi_rvalid $end
+$var wire 1 n s_axi_rready $end
+$var reg 32 o pass_count [31:0] $end
+$var reg 32 p fail_count [31:0] $end
+$var reg 64 q rdata_got [63:0] $end
+
+$scope fork unnamed$$_vcs_0 $end
+
+$scope begin unnamed$$_vcs_1 $end
+$upscope $end
+
+$upscope $end
+
+
+$scope module dut $end
+$var wire 1 r aw_lane $end
+$var wire 1 s clk $end
+$var wire 1 t rst_n $end
+$var wire 4 u m_axi_awid [3:0] $end
+$var wire 32 v m_axi_awaddr [31:0] $end
+$var wire 8 w m_axi_awlen [7:0] $end
+$var wire 3 x m_axi_awsize [2:0] $end
+$var wire 2 y m_axi_awburst [1:0] $end
+$var wire 1 z m_axi_awlock $end
+$var wire 4 { m_axi_awcache [3:0] $end
+$var wire 3 | m_axi_awprot [2:0] $end
+$var wire 4 } m_axi_awqos [3:0] $end
+$var wire 4 ~ m_axi_awregion [3:0] $end
+$var wire 1 "! m_axi_awvalid $end
+$var wire 1 . m_axi_awready $end
+$var wire 64 "" m_axi_wdata [63:0] $end
+$var wire 8 "# m_axi_wstrb [7:0] $end
+$var wire 1 "$ m_axi_wlast $end
+$var wire 1 "% m_axi_wvalid $end
+$var wire 1 3 m_axi_wready $end
+$var wire 4 4 m_axi_bid [3:0] $end
+$var wire 2 5 m_axi_bresp [1:0] $end
+$var wire 1 6 m_axi_bvalid $end
+$var wire 1 "& m_axi_bready $end
+$var wire 4 "' m_axi_arid [3:0] $end
+$var wire 32 "( m_axi_araddr [31:0] $end
+$var wire 8 ") m_axi_arlen [7:0] $end
+$var wire 3 "* m_axi_arsize [2:0] $end
+$var wire 2 "+ m_axi_arburst [1:0] $end
+$var wire 1 ", m_axi_arlock $end
+$var wire 4 "- m_axi_arcache [3:0] $end
+$var wire 3 ". m_axi_arprot [2:0] $end
+$var wire 4 "/ m_axi_arqos [3:0] $end
+$var wire 4 "0 m_axi_arregion [3:0] $end
+$var wire 1 "1 m_axi_arvalid $end
+$var wire 1 C m_axi_arready $end
+$var wire 4 D m_axi_rid [3:0] $end
+$var wire 64 E m_axi_rdata [63:0] $end
+$var wire 2 F m_axi_rresp [1:0] $end
+$var wire 1 G m_axi_rlast $end
+$var wire 1 H m_axi_rvalid $end
+$var wire 1 "2 m_axi_rready $end
+$var wire 8 J s_axi_awid [7:0] $end
+$var wire 32 K s_axi_awaddr [31:0] $end
+$var wire 8 L s_axi_awlen [7:0] $end
+$var wire 3 M s_axi_awsize [2:0] $end
+$var wire 2 N s_axi_awburst [1:0] $end
+$var wire 1 O s_axi_awlock $end
+$var wire 4 P s_axi_awcache [3:0] $end
+$var wire 3 Q s_axi_awprot [2:0] $end
+$var wire 4 R s_axi_awqos [3:0] $end
+$var wire 1 S s_axi_awvalid $end
+$var wire 1 "3 s_axi_awready $end
+$var wire 32 U s_axi_wdata [31:0] $end
+$var wire 4 V s_axi_wstrb [3:0] $end
+$var wire 1 W s_axi_wlast $end
+$var wire 1 X s_axi_wvalid $end
+$var wire 1 "4 s_axi_wready $end
+$var wire 8 "5 s_axi_bid [7:0] $end
+$var wire 2 "6 s_axi_bresp [1:0] $end
+$var wire 1 "7 s_axi_bvalid $end
+$var wire 1 ] s_axi_bready $end
+$var wire 8 ^ s_axi_arid [7:0] $end
+$var wire 32 _ s_axi_araddr [31:0] $end
+$var wire 8 ` s_axi_arlen [7:0] $end
+$var wire 3 a s_axi_arsize [2:0] $end
+$var wire 2 b s_axi_arburst [1:0] $end
+$var wire 1 c s_axi_arlock $end
+$var wire 4 d s_axi_arcache [3:0] $end
+$var wire 3 e s_axi_arprot [2:0] $end
+$var wire 4 f s_axi_arqos [3:0] $end
+$var wire 1 g s_axi_arvalid $end
+$var wire 1 "8 s_axi_arready $end
+$var wire 8 "9 s_axi_rid [7:0] $end
+$var wire 32 ": s_axi_rdata [31:0] $end
+$var wire 2 "; s_axi_rresp [1:0] $end
+$var wire 1 "< s_axi_rlast $end
+$var wire 1 "= s_axi_rvalid $end
+$var wire 1 n s_axi_rready $end
+$var reg 1 "> aw_lane_r $end
+$var reg 1 "? aw_pending_r $end
+$var reg 1 "@ ar_lane_r $end
+$var reg 1 "A ar_pending_r $end
+$var wire 1 "B ar_lane $end
+$var wire 3 "C aw_size_clamped [2:0] $end
+$var wire 3 "D ar_size_clamped [2:0] $end
+$upscope $end
+
+$upscope $end
+
+$enddefinitions $end
+
+#0
+$dumpvars
+0!
+0=
+0B
+0(
+0-
+17
+1I
+11
+02
+0"
+1h
+1T
+0\
+1l
+0m
+1Y
+b00000000000000000000000000000000 9
+b01 <
+b0000 >
+b0000 8
+b00000000 :
+b000 ?
+b0000 @
+b0000 A
+b010 ;
+b00000000000000000000000000000000 $
+b01 '
+b0000 )
+b0000 #
+b00000000 %
+b000 *
+b0000 +
+b0000 ,
+b010 &
+b0000000000000000000000000000000000000000000000000000000000000000 /
+b11111111 0
+bxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx q
+b00000000 Z
+b00 [
+b00000000000000000000000000000000 j
+b00000000 i
+b00 k
+b00000000000000000000000000000000 p
+b00000000000000000000000000000000 o
+0"B
+0"@
+0"A
+0">
+0"?
+b010 "D
+b010 "C
+0z
+0O
+0"!
+0S
+1"$
+1W
+0"%
+0X
+1"&
+1]
+0",
+0c
+0"1
+0g
+1"2
+1n
+1"3
+1.
+1"4
+13
+0"7
+06
+1"8
+1C
+1"<
+1G
+0"=
+0H
+0s
+0t
+b0000 u
+b00000000000000000000000000000000 v
+b00000000 w
+b010 x
+b01 y
+b0000 {
+b000 |
+b0000 }
+b0000 ~
+b0000000000000000000000000000000000000000000000000000000000000000 ""
+b11111111 "#
+b0000 4
+b00 5
+b0000 "'
+b00000000000000000000000000000000 "(
+b00000000 ")
+b010 "*
+b01 "+
+b0000 "-
+b000 ".
+b0000 "/
+b0000 "0
+b0000 D
+b0000000000000000000000000000000000000000000000000000000000000000 E
+b00 F
+b00000000 J
+b00000000000000000000000000000000 K
+b010 M
+b00000000000000000000000000000000 U
+b1111 V
+b00000000 "5
+b00 "6
+b00000000 ^
+b00000000000000000000000000000000 _
+b010 a
+b00000000 "9
+b00000000000000000000000000000000 ":
+b00 ";
+b00000000 L
+b01 N
+b0000 P
+b000 Q
+b0000 R
+b00000000 `
+b01 b
+b0000 d
+b000 e
+b0000 f
+0r
+$end

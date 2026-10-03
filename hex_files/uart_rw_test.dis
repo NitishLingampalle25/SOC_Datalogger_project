@@ -1,0 +1,312 @@
+
+uart_rw_test.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .text.init:
+
+80000000 <_start>:
+
+_start:
+    /* ---------------------------------------------------------------
+     * Disable all interrupts at machine level
+     * --------------------------------------------------------------- */
+    csrw    mie,  zero
+80000000:	30401073          	csrrw	zero,mie,zero
+    csrw    mstatus, zero
+80000004:	30001073          	csrrw	zero,mstatus,zero
+
+    /* ---------------------------------------------------------------
+     * Set stack pointer to top of DCCM region
+     *   DCCM base = 0xF004_0000, size = 64 KB → top = 0xF005_0000
+     * --------------------------------------------------------------- */
+    li      sp, 0xF0050000
+80000008:	f0050137          	lui	sp,0xf0050
+
+    /* ---------------------------------------------------------------
+     * Zero .bss section
+     *   BSS_START and BSS_END are symbols exported by link.ld
+     * --------------------------------------------------------------- */
+    la      a0, BSS_START
+8000000c:	70040517          	auipc	a0,0x70040
+80000010:	05450513          	addi	a0,a0,84 # f0040060 <fail_count>
+    la      a1, BSS_END
+80000014:	70040597          	auipc	a1,0x70040
+80000018:	05858593          	addi	a1,a1,88 # f004006c <BSS_END>
+    beq     a0, a1, .bss_done
+8000001c:	00b50763          	beq	a0,a1,8000002a <.bss_done>
+
+80000020 <.bss_loop>:
+.bss_loop:
+    sw      zero, 0(a0)
+80000020:	00052023          	sw	zero,0(a0)
+    addi    a0, a0, 4
+80000024:	0511                	c.addi	a0,4
+    blt     a0, a1, .bss_loop
+80000026:	feb54de3          	blt	a0,a1,80000020 <.bss_loop>
+
+8000002a <.bss_done>:
+.bss_done:
+
+    /* ---------------------------------------------------------------
+     * Jump to main()
+     * --------------------------------------------------------------- */
+    call    main
+8000002a:	054000ef          	jal	ra,8000007e <main>
+
+8000002e <.park>:
+
+    /* ---------------------------------------------------------------
+     * Park: main() should never return but handle it safely
+     * --------------------------------------------------------------- */
+.park:
+    j       .park
+8000002e:	a001                	c.j	8000002e <.park>
+
+Disassembly of section .text:
+
+80000030 <spin>:
+80000030:	1141                	c.addi	sp,-16 # f004fff0 <STACK+0xef80>
+80000032:	c62a                	c.swsp	a0,12(sp)
+/* =========================================================================
+ * Simple spin-delay (avoids needing timer peripheral in simulation)
+ * ========================================================================= */
+static void spin(volatile unsigned int n)
+{
+    while (n--) { __asm__ volatile ("nop"); }
+80000034:	47b2                	c.lwsp	a5,12(sp)
+80000036:	fff78713          	addi	a4,a5,-1
+8000003a:	c63a                	c.swsp	a4,12(sp)
+8000003c:	c799                	c.beqz	a5,8000004a <spin+0x1a>
+8000003e:	0001                	c.addi	zero,0
+80000040:	47b2                	c.lwsp	a5,12(sp)
+80000042:	fff78713          	addi	a4,a5,-1
+80000046:	c63a                	c.swsp	a4,12(sp)
+80000048:	fbfd                	c.bnez	a5,8000003e <spin+0xe>
+}
+8000004a:	0141                	c.addi	sp,16
+8000004c:	8082                	c.jr	ra
+
+8000004e <check>:
+ * ========================================================================= */
+static void check(unsigned int got, unsigned int expected,
+                  unsigned int mask, const char *tag_unused)
+{
+    (void)tag_unused;
+    if ((got & mask) == (expected & mask)) {
+8000004e:	8d2d                	c.xor	a0,a1
+80000050:	8d71                	c.and	a0,a2
+80000052:	e909                	c.bnez	a0,80000064 <check+0x16>
+        pass_count++;
+80000054:	f0040737          	lui	a4,0xf0040
+80000058:	06472783          	lw	a5,100(a4) # f0040064 <pass_count>
+8000005c:	0785                	c.addi	a5,1
+8000005e:	06f72223          	sw	a5,100(a4)
+80000062:	8082                	c.jr	ra
+    } else {
+        fail_count++;
+80000064:	f0040737          	lui	a4,0xf0040
+80000068:	06072783          	lw	a5,96(a4) # f0040060 <fail_count>
+8000006c:	0785                	c.addi	a5,1
+8000006e:	06f72023          	sw	a5,96(a4)
+        test_fail = 1;
+80000072:	f00407b7          	lui	a5,0xf0040
+80000076:	4705                	c.li	a4,1
+80000078:	06e7a423          	sw	a4,104(a5) # f0040068 <test_fail>
+    }
+}
+8000007c:	8082                	c.jr	ra
+
+8000007e <main>:
+
+/* =========================================================================
+ * main – test entry point called from crt0.S
+ * ========================================================================= */
+int main(void)
+{
+8000007e:	1101                	c.addi	sp,-32
+80000080:	ce06                	c.swsp	ra,28(sp)
+80000082:	cc22                	c.swsp	s0,24(sp)
+80000084:	ca26                	c.swsp	s1,20(sp)
+80000086:	c84a                	c.swsp	s2,16(sp)
+80000088:	c64e                	c.swsp	s3,12(sp)
+
+    /* ------------------------------------------------------------------
+     * TC1 : LCR write – configure 8-N-1 (bits[1:0]=11 → 8-bit word,
+     *        no parity bit3=0, 1 stop bit bit2=0) → value 0x03
+     * ------------------------------------------------------------------ */
+    UART_LCR = 0x03u;
+8000008a:	400004b7          	lui	s1,0x40000
+8000008e:	478d                	c.li	a5,3
+80000090:	c4dc                	c.sw	a5,12(s1)
+    spin(4);
+80000092:	4511                	c.li	a0,4
+80000094:	3f71                	c.jal	80000030 <spin>
+    lcr_rb = UART_LCR;                          /* TC9: read-back later */
+80000096:	44dc                	c.lw	a5,12(s1)
+
+    /* ------------------------------------------------------------------
+     * TC2 : BAUD divisor write – set to 0x04 (fast baud for simulation)
+     * ------------------------------------------------------------------ */
+    UART_BAUD = 0x04u;
+80000098:	4711                	c.li	a4,4
+8000009a:	c498                	c.sw	a4,8(s1)
+    spin(4);
+8000009c:	853a                	c.mv	a0,a4
+8000009e:	3f49                	c.jal	80000030 <spin>
+
+    /* ------------------------------------------------------------------
+     * TC3 : IER write – enable RX data-ready interrupt (bit 0)
+     * ------------------------------------------------------------------ */
+    UART_IER = 0x01u;
+800000a0:	4785                	c.li	a5,1
+800000a2:	c0dc                	c.sw	a5,4(s1)
+    spin(4);
+800000a4:	4511                	c.li	a0,4
+800000a6:	3769                	c.jal	80000030 <spin>
+    ier_rb = UART_IER;                          /* TC10: read-back later */
+800000a8:	0044a983          	lw	s3,4(s1) # 40000004 <_start-0x3ffffffc>
+    /* ------------------------------------------------------------------
+     * TC4 : LSR read – TX empty bits must be set after reset / init
+     *        THRE(bit5) and TEMT(bit6) should be 1 (TX FIFO empty)
+     * ------------------------------------------------------------------ */
+    lsr_val = UART_LSR;
+    check(lsr_val, LSR_THRE | LSR_TEMT, LSR_THRE | LSR_TEMT, "TC4-LSR-TX-EMPTY");
+800000ac:	f00406b7          	lui	a3,0xf0040
+800000b0:	00068693          	addi	a3,a3,0 # f0040000 <_end+0x7003fe8c>
+800000b4:	06000613          	addi	a2,zero,96
+800000b8:	85b2                	c.mv	a1,a2
+800000ba:	48c8                	c.lw	a0,20(s1)
+800000bc:	3f49                	c.jal	8000004e <check>
+
+    /* ------------------------------------------------------------------
+     * TC5 : THR write – transmit 'A' (0x41)
+     * ------------------------------------------------------------------ */
+    UART_THR = 0x41u;                           /* write 'A' */
+800000be:	04100793          	addi	a5,zero,65
+800000c2:	c09c                	c.sw	a5,0(s1)
+    spin(8);
+800000c4:	4521                	c.li	a0,8
+800000c6:	37ad                	c.jal	80000030 <spin>
+
+    /* ------------------------------------------------------------------
+     * TC6 : THR register write 'Z' (0x5A)  (second write transaction)
+     * ------------------------------------------------------------------ */
+    UART_THR = 0x5Au;                           /* write 'Z' */
+800000c8:	05a00793          	addi	a5,zero,90
+800000cc:	c09c                	c.sw	a5,0(s1)
+    spin(8);
+800000ce:	4521                	c.li	a0,8
+800000d0:	3785                	c.jal	80000030 <spin>
+800000d2:	20000413          	addi	s0,zero,512
+     * ------------------------------------------------------------------ */
+    {
+        unsigned int timeout = 512u;
+        unsigned int thre_seen = 0u;
+        while (timeout--) {
+            lsr_val = UART_LSR;
+800000d6:	04d1                	c.addi	s1,20
+            if (lsr_val & LSR_THRE) {
+                thre_seen = 1u;
+                break;
+            }
+            spin(2);
+800000d8:	4909                	c.li	s2,2
+            lsr_val = UART_LSR;
+800000da:	409c                	c.lw	a5,0(s1)
+            if (lsr_val & LSR_THRE) {
+800000dc:	0207f793          	andi	a5,a5,32
+800000e0:	e791                	c.bnez	a5,800000ec <main+0x6e>
+            spin(2);
+800000e2:	854a                	c.mv	a0,s2
+800000e4:	37b1                	c.jal	80000030 <spin>
+        while (timeout--) {
+800000e6:	147d                	c.addi	s0,-1
+800000e8:	f86d                	c.bnez	s0,800000da <main+0x5c>
+800000ea:	a011                	c.j	800000ee <main+0x70>
+                thre_seen = 1u;
+800000ec:	4405                	c.li	s0,1
+        }
+        check(thre_seen, 1u, 0xFFFFFFFFu, "TC7-LSR-THRE-POLL");
+800000ee:	f00406b7          	lui	a3,0xf0040
+800000f2:	01468693          	addi	a3,a3,20 # f0040014 <_end+0x7003fea0>
+800000f6:	567d                	c.li	a2,-1
+800000f8:	4585                	c.li	a1,1
+800000fa:	8522                	c.mv	a0,s0
+800000fc:	3f89                	c.jal	8000004e <check>
+
+    /* ------------------------------------------------------------------
+     * TC8 : LCR write + read-back  (validates read transaction path)
+     *        Write 0x03, read back and confirm
+     * ------------------------------------------------------------------ */
+    UART_LCR = 0x03u;
+800000fe:	40000437          	lui	s0,0x40000
+80000102:	478d                	c.li	a5,3
+80000104:	c45c                	c.sw	a5,12(s0)
+    spin(4);
+80000106:	4511                	c.li	a0,4
+80000108:	3725                	c.jal	80000030 <spin>
+    lcr_rb = UART_LCR;
+    check(lcr_rb, 0x03u, 0xFFu, "TC8-LCR-READBACK");
+8000010a:	f00406b7          	lui	a3,0xf0040
+8000010e:	02868693          	addi	a3,a3,40 # f0040028 <_end+0x7003feb4>
+80000112:	0ff00613          	addi	a2,zero,255
+80000116:	458d                	c.li	a1,3
+80000118:	4448                	c.lw	a0,12(s0)
+8000011a:	3f15                	c.jal	8000004e <check>
+
+    /* ------------------------------------------------------------------
+     * TC9 : IER read-back – validate value written in TC3
+     * ------------------------------------------------------------------ */
+    check(ier_rb, 0x01u, 0xFFu, "TC9-IER-READBACK");
+8000011c:	f00406b7          	lui	a3,0xf0040
+80000120:	03c68693          	addi	a3,a3,60 # f004003c <_end+0x7003fec8>
+80000124:	0ff00613          	addi	a2,zero,255
+80000128:	4585                	c.li	a1,1
+8000012a:	854e                	c.mv	a0,s3
+8000012c:	370d                	c.jal	8000004e <check>
+
+    /* ------------------------------------------------------------------
+     * TC10 : LCR – write 0x0B (8-bit, parity enabled, even parity)
+     *         read back and verify
+     * ------------------------------------------------------------------ */
+    UART_LCR = 0x0Bu;
+8000012e:	47ad                	c.li	a5,11
+80000130:	c45c                	c.sw	a5,12(s0)
+    spin(4);
+80000132:	4511                	c.li	a0,4
+80000134:	3df5                	c.jal	80000030 <spin>
+    lcr_rb = UART_LCR;
+    check(lcr_rb, 0x0Bu, 0xFFu, "TC10-LCR-PARITY");
+80000136:	f00406b7          	lui	a3,0xf0040
+8000013a:	05068693          	addi	a3,a3,80 # f0040050 <_end+0x7003fedc>
+8000013e:	0ff00613          	addi	a2,zero,255
+80000142:	45ad                	c.li	a1,11
+80000144:	4448                	c.lw	a0,12(s0)
+80000146:	3721                	c.jal	8000004e <check>
+
+    /* ------------------------------------------------------------------
+     * Final result
+     * ------------------------------------------------------------------ */
+    if (test_fail == 0u) {
+80000148:	f00407b7          	lui	a5,0xf0040
+8000014c:	0687a783          	lw	a5,104(a5) # f0040068 <test_fail>
+80000150:	eb91                	c.bnez	a5,80000164 <main+0xe6>
+        RESULT_REG = PASS_CODE;     /* 0xDEADBEEF → ALL PASS */
+80000152:	d0580737          	lui	a4,0xd0580
+80000156:	deadc7b7          	lui	a5,0xdeadc
+8000015a:	eef78793          	addi	a5,a5,-273 # deadbeef <_end+0x5eadbd7b>
+8000015e:	c31c                	c.sw	a5,0(a4)
+    } else {
+        RESULT_REG = FAIL_CODE;     /* 0xBAD0DEAD → FAIL     */
+    }
+
+    /* Park the core */
+    while (1) { __asm__ volatile ("nop"); }
+80000160:	0001                	c.addi	zero,0
+80000162:	bffd                	c.j	80000160 <main+0xe2>
+        RESULT_REG = FAIL_CODE;     /* 0xBAD0DEAD → FAIL     */
+80000164:	d0580737          	lui	a4,0xd0580
+80000168:	bad0e7b7          	lui	a5,0xbad0e
+8000016c:	ead78793          	addi	a5,a5,-339 # bad0dead <_end+0x3ad0dd39>
+80000170:	c31c                	c.sw	a5,0(a4)
+80000172:	b7fd                	c.j	80000160 <main+0xe2>

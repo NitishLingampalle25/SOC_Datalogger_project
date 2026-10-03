@@ -1,21 +1,17 @@
 -sverilog
 +define+RV_BUILD_AXI4
+# RV_PHYSICAL strips out the generate-if width-check guards in beh_lib.sv
+# (rvdffiee, rvdfflie, rvdffpcie).  Without it VCS elaborates the else-branch
+# $error() even when the condition is satisfied, causing EEST at elaboration.
 +define+RV_PHYSICAL
 
 # ----------------- Include Directories -----------------
 +incdir+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/include
 +incdir+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/snapshots/default
 +incdir+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Cores-VeeR-EL2/design/include
++incdir+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/inc
 
-# ----------------- Global timescale stub (MUST be first in the filelist) ---------
-# Sets `timescale 1ns/1ps for the entire compilation unit.
-# VCS LRM rule: any module with `timescale requires ALL preceding
-# modules to also have one. Listing this stub first satisfies that rule
-# for every file that follows (VeeR SV files have no timescale; UART/
-# Interconnect .v files do – without this stub VCS throws ITSFM errors).
-/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/timescale.v
-
-# ----------------- VeeR EL2 Core (el2_pkg package MUST be second) ----------------
+# ----------------- VeeR EL2 Core (el2_pkg package MUST be first) -----------------
 # el2_def.sv defines el2_pkg (which contains el2_param_t struct).
 # It must be compiled before any file that does 'import el2_pkg::*'
 # or includes el2_param.vh (which uses el2_param_t).
@@ -84,20 +80,67 @@
 
 # ----------------- UART IP Core -----------------
 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/axi_internal_fifo.v
-/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/axi_uart_top.v
-/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/uart_controller.v
 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/uart_parity_bit_compute.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/uart_controller.v
 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/uart_receiver.v
 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/uart_transmitter.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/axi-lite_uart-ipcore-develop/src/rtl/axi_uart_top.v
+
+# ----------------- AES IP Core -----------------
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/aes/aes_rcon.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/aes/aes_sbox.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/aes/aes_inv_sbox.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/aes/aes_key_expand_128.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/aes/aes_cipher_top.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/aes/aes_inv_cipher_top.v
+
+# ----------------- AES VeeR Adapter (32-to-128 bit AXI4 bridge) -----------------
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/aes_veer_adapter.v
+
+# ----------------- DMA Controller (packages first, then RTL) -----------------
+# Packages must precede the modules that import them
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/inc/amba_axi_pkg.sv
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/inc/dma_utils_pkg.sv
+
+# rggen register-file primitives (csr_dma.v is generated from these)
+# +incdir covers rggen_rtl_macros.vh and rggen_clog2.vh used by csr_dma.v
++incdir+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_mux.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_or_reducer.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_address_decoder.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_adapter_common.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_skid_buffer.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_bridge.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_adapter.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_w01trg.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_counter.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_register_common.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_default_register.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_external_register.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_indirect_register.v
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/rggen-verilog-rtl/rggen_maskable_register.v
+
+# Generated CSR register file (instantiates rggen primitives above)
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/csr_dma.v
+
+# DMA functional RTL
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/dma_fifo.sv
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/dma_fsm.sv
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/dma_streamer.sv
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/dma_axi_if.sv
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/dma_func_wrapper.sv
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/DMA/dma_axi_wrapper.sv
 
 # ----------------- AXI Interconnect & Bridge -----------------
 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Interconnect/priority_encoder.v
 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Interconnect/arbiter.v
 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Interconnect/axi_interconnect.v
 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/Interconnect/axi_interconnect_wrap_2x6.v
-/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/axi_interconnect_uart_top.v
 /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/axi4_to_axilite_bridge.v
 
-# ----------------- Top Wrapper & TB -----------------
-/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/veer_wrapper_uart_integrated.v
-/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/TB_files/veer_integrated_uart_adapter_tb.sv
+# ----------------- SoC Top-Level: VeeR2 + DMA + AES + UART Integrated -----------------
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/RTL_files/veer2_dma_aes_uart.v
+
+# ----------------- Testbench -----------------
+/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/TB_files/veer2_dma_aes_uart_tb.sv
