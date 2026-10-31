@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <div align="center">
 
 # Secure RISC-V SoC Data Logger for Mission-Critical Telemetry
