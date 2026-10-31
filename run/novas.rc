@@ -377,19 +377,21 @@ savePropStat = FALSE
 savePropDtl = TRUE
 [QtDialog]
 openFileDlg = 499,176,602,483
-unknownSave_SaveSignal(s)NotFound = 504,248,590,340
 capturePreview_SaveAs = 505,312,590,340
 dockContainerWindowTitleDialog = 490,395,620,111
 highlightColor = 461,280,675,327
 capturePreview = 0,64,1600,836
 captureSelect = 482,243,637,404
 nsWindowManager = 430,242,738,404
-importDesignForm = 441,194,715,574
 _qwWin9_Selectfile = 239,305,590,340
-QwWarnMsgDlg = 499,650,592,250
 ForceDebugReport = 495,290,590,340
 vgifFileDialogU = 181,274,790,453
-QwUserAskDlg = 638,415,324,134
+importDesignForm = 441,194,715,574
+SignalSpacingDialog = 627,439,344,84
+unknownSave_SaveSignal(s)NotFound = 503,311,590,340
+qWaveSignalDialog = 399,241,800,479
+QwWarnMsgDlg = 505,650,592,250
+QwUserAskDlg = 637,367,324,134
 unknownSave = 568,358,461,245
 [Relationship]
 hideRecursiceNode = FALSE
@@ -402,11 +404,11 @@ ErrorObject = ID_GRAY5
 AnnotateSignal = TRUE
 HighlightSafetyObject = TRUE
 [Session Cache]
-2 = string (session file name)
 3 = string (session file name)
 4 = string (session file name)
 5 = string (session file name)
-1 = /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/verdiLog/novas_autosave.ses
+1 = /home/student/Documents/SOC_Datalogger_project/run/verdiLog/novas_autosave.ses
+2 = /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/verdiLog/novas_autosave.ses
 [Simulation]
 scsPath = scsim
 scsOption = 
@@ -464,7 +466,6 @@ vcs_mixPath = simv
 vcs_mixOption = -vhdlrun "-vhpi debussy:FSDBDumpCmd"
 scs_mixPath = scsim
 scs_mixOption = -vhpi debussy:FSDBDumpCmd
-vcs_svOption = 
 thirdpartyIdx = -1
 iscCmdSep = FALSE
 ScsDebugAll = FALSE
@@ -475,7 +476,8 @@ bSVTBMode = TRUE
 SimMode = TRUE
 interactiveDebugging = TRUE
 KeepBreakPoints = FALSE
-vcs_svPath = /home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/simv
+vcs_svPath = /home/student/Documents/SOC_Datalogger_project/run/simv_soc_top
+vcs_svOption = +HEX=soc_full_test.hex
 [SimulationPlus2]
 eventDumpUnfinish = FALSE
 [Source]
@@ -845,7 +847,7 @@ scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
 getSignalForm = 0 0 800 479 245 381 505 183
-viewPort = 0 25 1600 181 100 65
+viewPort = 0 25 1600 324 100 65
 legendBackground = -c ID_BLACK
 valueBackground = -c ID_BLACK
 curveBackground = -c ID_BLACK
@@ -1011,8 +1013,9 @@ printBasic = 1 0 0 FALSE FALSE
 printDest = -printer {lp}
 printSignature = {%f %h %t} {}
 curveWindow_Drag&Drop_Mode = TRUE
-RecentFile1 = "\"/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/dump.fsdb\""
-RecentFile2 = "\"/home/student/Nitish_161/TCAS_SOC_project/run/dump.fsdb\""
+RecentFile1 = "\"/home/student/Documents/SOC_Datalogger_project/run/tb_soc_top.fsdb\""
+RecentFile2 = "\"/home/student/Nitish_161_SOC_sem7/TCAS_SOC_project/run/dump.fsdb\""
+RecentFile3 = "\"/home/student/Nitish_161/TCAS_SOC_project/run/dump.fsdb\""
 open_file_time_range = FALSE
 legend_window_font = -f COURIER12 -c ID_CYAN5
 value_window_font = -f COURIER12 -c ID_CYAN5
@@ -1545,7 +1548,7 @@ AddImportArgument = FALSE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -s
 [wave.0]
-viewPort = 0 25 1600 181 100 65
+viewPort = 0 25 1600 324 100 65
 [wave.1]
 viewPort = 0 25 1600 733 207 65
 [wave.2]

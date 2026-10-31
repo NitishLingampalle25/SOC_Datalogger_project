@@ -1,0 +1,2 @@
+wdt_irq_o,output,1
+wdt_reset_o,output,1

@@ -94,7 +94,7 @@ module tb_soc_top;
     wire [3:0]   ifu_axi_awqos;    wire ifu_axi_wvalid;
     reg          ifu_axi_wready;   wire [63:0] ifu_axi_wdata;
     wire [7:0]   ifu_axi_wstrb;    wire ifu_axi_wlast;
-    wire         ifu_axi_bvalid;   reg  ifu_axi_bready;
+    wire         ifu_axi_bvalid;   wire ifu_axi_bready;  // DUT output — must be wire
     wire [1:0]   ifu_axi_bresp;    wire [IFU_BUS_TAG-1:0] ifu_axi_bid;
 
     // SB AXI (tie off)
@@ -320,7 +320,7 @@ module tb_soc_top;
         hex_file = "soc_full_test.hex";
         void'($value$plusargs("HEX=%s", hex_file));
         $display("[TB] Loading firmware: %s", hex_file);
-        $readmemh(soc_full_test.hex, imem);
+        $readmemh(hex_file, imem);
         $display("[TB] imem[0..7] = %02X %02X %02X %02X %02X %02X %02X %02X (expect 17 01 05 F0 13 01 01 00)",
                  imem[0], imem[1], imem[2], imem[3], imem[4], imem[5], imem[6], imem[7]);
     end
@@ -340,27 +340,31 @@ module tb_soc_top;
         end
     endfunction
 
-    // IFU AXI slave model
-    initial begin
-        ifu_axi_arready = 1'b0; ifu_axi_awready = 1'b0; ifu_axi_wready = 1'b0;
-        ifu_axi_bready  = 1'b0; ifu_axi_rvalid  = 1'b0; ifu_axi_rlast  = 1'b0;
-        ifu_axi_rid     = '0;   ifu_axi_rdata   = '0;   ifu_axi_rresp  = 2'b00;
-    end
-
+    // IFU AXI slave model — all signals driven by the always block below (reset gated).
     always @(posedge clk) begin
-        ifu_axi_arready <= 1'b1;
-        ifu_axi_awready <= 1'b1;
-        ifu_axi_wready  <= 1'b1;
-        ifu_axi_bready  <= 1'b0;
-        if (ifu_axi_arvalid && ifu_axi_arready) begin
-            ifu_axi_rvalid <= 1'b1;
-            ifu_axi_rid    <= ifu_axi_arid;
-            ifu_axi_rdata  <= fetch64(ifu_axi_araddr);
-            ifu_axi_rresp  <= 2'b00;
-            ifu_axi_rlast  <= 1'b1;
+        if (!rst_l) begin
+            ifu_axi_arready <= 1'b0;
+            ifu_axi_awready <= 1'b0;
+            ifu_axi_wready  <= 1'b0;
+            ifu_axi_rvalid  <= 1'b0;
+            ifu_axi_rlast   <= 1'b0;
+            ifu_axi_rid     <= '0;
+            ifu_axi_rdata   <= '0;
+            ifu_axi_rresp   <= 2'b00;
         end else begin
-            ifu_axi_rvalid <= 1'b0;
-            ifu_axi_rlast  <= 1'b0;
+            ifu_axi_arready <= 1'b1;
+            ifu_axi_awready <= 1'b1;
+            ifu_axi_wready  <= 1'b1;
+            if (ifu_axi_arvalid && ifu_axi_arready) begin
+                ifu_axi_rvalid <= 1'b1;
+                ifu_axi_rid    <= ifu_axi_arid;
+                ifu_axi_rdata  <= fetch64(ifu_axi_araddr);
+                ifu_axi_rresp  <= 2'b00;
+                ifu_axi_rlast  <= 1'b1;
+            end else begin
+                ifu_axi_rvalid <= 1'b0;
+                ifu_axi_rlast  <= 1'b0;
+            end
         end
     end
 
@@ -434,11 +438,13 @@ module tb_soc_top;
     end
 
     // =========================================================================
-    // Waveform dump
+    // Waveform dump — FSDB (Verdi native, no vcd2fsdb conversion needed)
     // =========================================================================
     initial begin
-        $dumpfile("tb_soc_top.vcd");
-        $dumpvars(0, tb_soc_top);
+        $fsdbDumpfile("tb_soc_top.fsdb");
+        $fsdbDumpvars(0, tb_soc_top);
+        $fsdbDumpMDA();
+        $fsdbDumpSVA();
     end
 
     // =========================================================================

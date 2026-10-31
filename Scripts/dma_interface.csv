@@ -1,0 +1,3 @@
+dma_done_o,output,1
+dma_error_o,output,1
+dma_irq_o,output,1

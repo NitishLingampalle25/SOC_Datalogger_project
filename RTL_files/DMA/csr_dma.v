@@ -52,7 +52,7 @@ module csr_dma #(
   wire [1:0] w_register_access;
   wire [7:0] w_register_address;
   wire [63:0] w_register_write_data;
-  wire [7:0] w_register_strobe;
+  wire [63:0] w_register_strobe;
   wire [11:0] w_register_active;
   wire [11:0] w_register_ready;
   wire [23:0] w_register_status;
