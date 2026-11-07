@@ -53,6 +53,12 @@ struct	_vcs_dpi_rsrc_msg_struct	{
 
 
 
+ extern int vc_uvmOnewayHash(/* INPUT */const char* string_in, /* INPUT */int seed);
+
+ extern int vc_uvmCreateRandomSeed(/* INPUT */const char* string_in, /* INPUT */int seed);
+
+ extern void vc_uvmReseed();
+
  extern int uvm_hdl_check_path(/* INPUT */const char* path);
 
  extern int uvm_hdl_deposit(/* INPUT */const char* path, const /* INPUT */svLogicVecVal *value);
@@ -69,7 +75,7 @@ struct	_vcs_dpi_rsrc_msg_struct	{
 
  extern int uvm_memory_load(/* INPUT */const char* nid, /* INPUT */const char* scope, /* INPUT */const char* fileName, /* INPUT */const char* radix, /* INPUT */const char* startaddr, /* INPUT */const char* endaddr, /* INPUT */const char* types);
 
- extern SV_STRING uvm_dpi_get_next_arg_c(/* INPUT */int init);
+ extern SV_STRING uvm_dpi_get_next_arg_c();
 
  extern SV_STRING uvm_dpi_get_tool_name_c();
 
@@ -86,8 +92,6 @@ struct	_vcs_dpi_rsrc_msg_struct	{
  extern void uvm_dump_re_cache();
 
  extern SV_STRING uvm_glob_to_re(/* INPUT */const char* glob);
-
- extern void m__uvm_report_dpi(/* INPUT */int severity, /* INPUT */const char* id, /* INPUT */const char* message, /* INPUT */int verbosity, /* INPUT */const char* filename, /* INPUT */int line);
 
  extern int parse_rsrc_msg(/* INPUT */const char* message, /* OUTPUT */rsrc_msg_struct *_msg_fields);
 

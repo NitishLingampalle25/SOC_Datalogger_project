@@ -41,5 +41,8 @@
 /home/student/Documents/SOC_Datalogger_project/TB_files/UVM_Arch_Files/systimer_vip_uvm_tb/systimer_vip_pkg.sv
 /home/student/Documents/SOC_Datalogger_project/TB_files/UVM_Arch_Files/wdt_vip_uvm_tb/wdt_vip_pkg.sv
 
+// ---- SoC-level package ------------------------------------------------------
+/home/student/Documents/SOC_Datalogger_project/TB_files/UVM_Arch_Files/soc_uvm_pkg.sv
+
 // ---- Top-level TB -----------------------------------------------------------
 /home/student/Documents/SOC_Datalogger_project/TB_files/UVM_Arch_Files/tb_soc_uvm_top.sv
